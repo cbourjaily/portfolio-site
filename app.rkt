@@ -2,15 +2,17 @@
 
 ;; web-server/web-server API
 
-(require web-server/web-server
-         web-server/http
-         web-server/http/xexpr
-         web-server/http/response
+(require web-server/web-server                    ; serve
+         web-server/http                          ; request/response structs
+         web-server/http/xexpr                    ; response/xexpr
+         web-server/http/response                 ; output-response
          (prefix-in files: web-server/dispatchers/dispatch-files)
          (prefix-in sequencer: web-server/dispatchers/dispatch-sequencer)
-         web-server/dispatchers/filesystem-map
-         web-server/dispatchers/dispatch
-         net/url)
+         web-server/dispatchers/filesystem-map    ; make-url->path
+         web-server/dispatchers/dispatch          ; dispatcher/c
+         net/url                                  ; url-path, path/param-path
+         net/mime-type)                           ; path->mime-type      
+                                              
 
 (require "home.rkt" "projects.rkt" "about.rkt" "contact.rkt"
          "layout.rkt" "404-page.rkt")
@@ -51,7 +53,9 @@
 (define static-dispatcher
   (files:make
    #:url->path (make-url->path htdocs-path)
-   #:path->mime-type (lambda (path) #"application/octet-stream")))
+   #:path->mime-type
+   (lambda (path)
+     (or (path-mime-type path) #"application/octet-stream"))))
 
 ; dispatcher : dispatcher?
 ; Dispatches requests by first checking for static files,

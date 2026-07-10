@@ -1,0 +1,64 @@
+html {
+	font-size: 18px;
+}
+
+body {
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 2rem;
+
+	background: antiquewhite;
+	color: #222;
+
+	font-family: Georgia, "Times New Roman", serif;
+	line-height: 1.6;
+}
+
+nav {
+	text-align: center;
+	margin-bottom: 2.5rem;
+	font-size: 1.05rem;
+}
+
+nav a {
+	color: #004b87;
+	text-decoration: none;
+	margin: 0 0.4rem;
+}
+
+nav a:hover {
+	text-decoration: underline;
+}
+
+h1 {
+	margin-top: 0;
+	margin-bottom: 1rem;
+	font-size: 2rem;
+	font-weight: normal;
+}
+
+p {
+	margin: 1rem 0;
+}
+
+footer {
+	margin-top: 4rem;
+	padding-top: 1rem;
+
+	border-top: 1px solid #999;
+
+	font-size: 0.9rem;
+	color: #556b86;
+}
+
+footer p {
+	margin: 0.25rem 0;
+}
+
+.tech-icon {
+	height: 1.25em;
+	width: auto;
+	vertical-align: -0.3em;
+	margin-left: 0.4em;
+	margin-right: -0.7em;
+}

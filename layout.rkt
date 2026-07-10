@@ -7,21 +7,36 @@
     (a ((href "/projects")) "Projects")
     " | "
     (a ((href "/about")) "About")
-    "|"
+    " | "
     (a ((href "/contact")) "Contact")))
 
 (define (page title body)
   `(html
     (head
-     (title ,title))
+     (meta ((charset "utf-8")))
+     (title ,title)
+     (link ((rel "stylesheet")
+            (href "/css/site.css"))))
     (body
      ,(nav-bar)
-     ,body)))
+     ,body
+     ,(my-footer)
+    )))
 
+(define LOGO
+  `(img ((src "/images/racket-logo.svg")
+           (alt "Racket")
+           (class "tech-icon"))))
 
-
-
-
+(define (my-footer)
+  `(footer
+   (p "Built with"
+      ,LOGO
+      ".")
+   (p
+    (a ((href "https://github.com/cbourjaily/portfolio-site"))
+       "View source on GitHub"))
+   (p "© 2026 Christopher Vote · MIT License")))
 
 
 

@@ -4,16 +4,11 @@
 (define (render-home-page request)
   (page
    "Home"
-   `(div
+   `(main
      (h1 "Home")
-     (p "Home coming soon."))))
-
-
-
-
-
-
-
-
+     (p "This website showcases my personal software projects.")
+     (p "Explore the navigation tabs above, or follow this " (a ((href "/projects")) "link") " directly to the projects.")
+     (p "Thanks for visiting!")
+     (p "-Christopher Vote"))))
 
 (provide render-home-page)
