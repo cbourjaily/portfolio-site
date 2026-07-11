@@ -1,6 +1,6 @@
 #lang racket
 
-(require "layout.rkt")
+(require "../layout.rkt")
 
 ; render-404-page : -> xexpr
 ; Produces an HTML page indicating that the requested page

@@ -1,7 +1,6 @@
 #lang racket
 
 ;; web-server/web-server API
-
 (require web-server/web-server                    ; serve
          web-server/http                          ; request/response structs
          web-server/http/xexpr                    ; response/xexpr
@@ -14,8 +13,8 @@
          net/mime-type)                           ; path->mime-type      
                                               
 
-(require "home.rkt" "projects.rkt" "about.rkt" "contact.rkt"
-         "layout.rkt" "404-page.rkt")
+(require "pages/home.rkt" "pages/projects.rkt" "pages/about.rkt" "pages/contact.rkt"
+         "layout.rkt" "pages/404-page.rkt")
 
 ;; Routing
 
@@ -38,10 +37,11 @@
 
 ;; Dispatchers
 
-; app-dispatcher : request -> does not return
-; Handles the request.
-(define (app-dispatcher conn req)
-  (output-response conn (route req)))
+; app-dispatcher : connection request -> does not return
+; Consumes a network connection and a request, routes the request,
+; and sends the resulting response over the connection.
+(define (app-dispatcher connection request)
+  (output-response connection (route request)))
 
 ; htdocs-path : path?
 ; Path to the directory containing static files.
@@ -66,8 +66,9 @@
 ;; Serve
 
 ; stop-server : -> void?
-; Stops the web server.
-(define stop-server
+; Procedure returned by serve. Calling it stops the server and
+; releases the listening socket.
+(define stop
   (serve #:dispatch dispatcher
          #:port 8000
          #:listen-ip #f))
@@ -76,6 +77,5 @@
 (printf"Press Ctrl+C to stop.\n")
 
 ; Keep the main thread alive until interrupted.
-(with-handlers ([exn:break? (lambda (e) (stop-server) (exit 0))])
+(with-handlers ([exn:break? (lambda (e) (stop) (exit 0))])
   (sync/enable-break never-evt))
-  

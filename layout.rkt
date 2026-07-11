@@ -6,7 +6,7 @@
     " | "
     (a ((href "/projects")) "Projects")
     " | "
-    (a ((href "/about")) "About")
+    (a ((href "/about")) "About the Coder")
     " | "
     (a ((href "/contact")) "Contact")))
 
@@ -28,6 +28,8 @@
            (alt "Racket")
            (class "tech-icon"))))
 
+(define LAST-UPDATED "July 11, 2026")
+
 (define (my-footer)
   `(footer
    (p "Built with"
@@ -36,15 +38,7 @@
    (p
     (a ((href "https://github.com/cbourjaily/portfolio-site"))
        "View source on GitHub"))
-   (p "© 2026 Christopher Vote · MIT License")))
-
-
-
-
-
-
-
-
-
+   (p "© 2026 Christopher Vote · MIT License")
+   (p "Last updated: " ,LAST-UPDATED)))
 
 (provide page nav-bar)

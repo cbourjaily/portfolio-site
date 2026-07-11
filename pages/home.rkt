@@ -1,5 +1,5 @@
 #lang racket
-(require "layout.rkt")
+(require "../layout.rkt")
 
 (define (render-home-page request)
   (page
