@@ -1,5 +1,6 @@
 #lang racket
 
+
 ;; web-server/web-server API
 (require web-server/web-server                    ; serve
          web-server/http                          ; request/response structs
@@ -16,10 +17,11 @@
 (require "pages/home.rkt" "pages/projects.rkt" "pages/about.rkt" "pages/contact.rkt"
          "layout.rkt" "pages/404-page.rkt")
 
+
 ;; Routing
 
-; route : request -> response
-; Consumes a request and routes to the appropriate page.
+; route : request? -> response
+; Consumes an HTTP request and produces the appropriate response.
 (define (route request)
   (define path
     (map path/param-path (url-path (request-uri request))))
@@ -35,20 +37,21 @@
     [else
      (response/xexpr #:code 404 (render-404-page))]))
 
+
 ;; Dispatchers
 
-; app-dispatcher : connection request -> does not return
-; Consumes a network connection and a request, routes the request,
-; and sends the resulting response over the connection.
+; app-dispatcher : connection? request? -> does not return
+; Consumes a network connection and an HTTP request, then sends
+; the appropriate response over the connection.
 (define (app-dispatcher connection request)
   (output-response connection (route request)))
 
 ; htdocs-path : path?
-; Path to the directory containing static files.
+; Produces the path to the directory containing static files.
 (define htdocs-path
   (build-path (current-directory) "htdocs"))
 
-; static-dispatcher : dispatcher?
+; static-dispatcher : dispatcher/c
 ; Dispatches requests for static files from the htdocs directory.
 (define static-dispatcher
   (files:make
@@ -57,15 +60,16 @@
    (lambda (path)
      (or (path-mime-type path) #"application/octet-stream"))))
 
-; dispatcher : dispatcher?
-; Dispatches requests by first checking for static files,
+; dispatcher : dispatcher/c
+; Dispatches requests by first attempting to serve static files,
 ; then routing requests to the application.
 (define dispatcher
   (sequencer:make static-dispatcher app-dispatcher))
+  
 
-;; Serve
+;; Server
 
-; stop-server : -> void?
+; stop : -> void?
 ; Procedure returned by serve. Calling it stops the server and
 ; releases the listening socket.
 (define stop
@@ -74,8 +78,8 @@
          #:listen-ip #f))
 
 (printf "Serving on http://localhost:8000/\n")
-(printf"Press Ctrl+C to stop.\n")
+(printf "Press Ctrl+C to stop.\n")
 
-; Keep the main thread alive until interrupted.
+; Keep the main thread alive until interrupted (Ctrl+C).
 (with-handlers ([exn:break? (lambda (e) (stop) (exit 0))])
   (sync/enable-break never-evt))

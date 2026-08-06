@@ -6,9 +6,12 @@
    "Home"
    `(main
      (h1 "Home")
+     
      (p "This website showcases my personal software projects.")
-     (p "Explore the navigation tabs above, or follow this " (a ((href "/projects")) "link") " directly to the projects.")
-     (p "Thanks for visiting!")
-     (p "-Christopher Vote"))))
+     
+     (p "Explore the navigation tabs above, or follow this " (a ((href "/projects")) "link") " 
+     to the projects.")
+     
+     (p "Thanks for visiting!"))))
 
 (provide render-home-page)
