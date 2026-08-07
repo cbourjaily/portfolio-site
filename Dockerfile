@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY . .
 
-RUN raco pkg install --auto web-server
+RUN raco pkg install --auto web-server net-lib
 
 EXPOSE 8000
 
