@@ -1,8 +1,8 @@
 FROM racket/racket:8.18
 
-WORDIR /app
+WORKDIR /app
 
-copy . .
+COPY . .
 
 EXPOSE 8000
 
