@@ -6,4 +6,4 @@ COPY . .
 
 EXPOSE 8000
 
-CMD ["racket', "app.rkt"]
+CMD ["racket", "app.rkt"]
