@@ -13,6 +13,27 @@
               "--format=%ad"
               "--date=format:%B %-d, %Y"))
   (close-output-port stdin)
+  (define date (string-trim (port->string stdout)))
+  (define err (port->string stderr))
+  (close-input-port stdout)
+  (close-input-port stderr)
+  (control 'wait)
+  (unless (string=? err "")
+    (eprintf "git-last-updated error: ~a\n" err))
+  (if (string=? date "")
+      "Unknown"
+      date))
+
+
+#|
+(define (git-last-updated)
+  (match-define (list stdout stdin pid stderr control)
+    (process* (find-executable-path "git")
+              "log"
+              "-1"
+              "--format=%ad"
+              "--date=format:%B %-d, %Y"))
+  (close-output-port stdin)
 
   (define date
     (string-trim (port->string stdout)))
@@ -22,6 +43,7 @@
   (if (string=? date "")
       "Unknown"
       date))
+|#
 
 ;; Site metadata
 (define LAST-UPDATED (git-last-updated))
