@@ -74,7 +74,11 @@
 ; releases the listening socket.
 (define stop
   (serve #:dispatch dispatcher
-         #:port 8000
+         #:port
+         (let ([p (getenv "PORT")])
+           (if p
+               (string->number p)
+               8000))
          #:listen-ip #f))
 
 (printf "Serving on http://localhost:8000/\n")
