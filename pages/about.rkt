@@ -12,10 +12,10 @@
    `(div ((class "about"))
      (h1 "About the Coder")
      ,PORTRAIT
-     (p "Hello, and welcome to my site.")
+     (p "Hello, and thanks for visiting my site.")
 
      (p "This website is a collection of software projects I have built while studying computer science and
-         building software both in and out of the classroom.")
+         exploring software development, both in and out of the classroom.")
 
      (p "What I enjoy most about programming is that it combines creativity with problem solving. I enjoy both
          the process of building software and understanding how ideas become working code.")
@@ -23,7 +23,7 @@
      (p "Whether learning about algorithms, exploring systems programming, or studying programming languages, I
          enjoy understanding how systems work beneath their abstractions.")
 
-     (p "Thank you for visiting, and feel free to get in touch using the links in the Contact section.")
+     (p "Feel free to get in touch using the links in the Contact section.")
 
      (p ((class "signature")) "-Christopher Vote"))))
 

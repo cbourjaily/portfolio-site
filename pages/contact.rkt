@@ -10,7 +10,7 @@
 
          (p
           "If you have questions about the projects presented here, would like to discuss programming,
-        or simply wish to get in touch, I would be happy to hear from you.")
+           or simply want to get in touch, I would be happy to hear from you.")
 
          (p
           (strong "Email:")

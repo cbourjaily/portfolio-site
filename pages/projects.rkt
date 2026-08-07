@@ -22,7 +22,7 @@
        "A desktop GUI for sending ICMP echo requests without relying on the operating system's "
        (code "ping")
        " utility. The application constructs, sends, and validates ICMP packets directly "
-       "in Python while streaming results live through a responsive interface.")
+       "in Python, streaming results live through a responsive interface.")
 
       (p
        (a ((href "https://github.com/cbourjaily/icmp-ping-gui/releases/tag/v1.0.0"))

@@ -6,12 +6,14 @@
    "Home"
    `(main
      (h1 "Home")
+
+     (p
+      "Welcome to my portfolio.")
+
+     (p
+      "Here you'll find a collection of software projects I have built.")
      
-     (p "This website showcases my personal software projects.")
-     
-     (p "Explore the navigation tabs above, or follow this " (a ((href "/projects")) "link") " 
-     to the projects.")
-     
-     (p "Thanks for visiting!"))))
+     (p
+      "Feel free to explore using the navigation above."))))
 
 (provide render-home-page)

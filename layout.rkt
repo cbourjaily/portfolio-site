@@ -49,8 +49,10 @@
         ,RACKET-LOGO)
      ".")
     (p
-     (a ((href "https://github.com/cbourjaily/portfolio-site"))
-        "View the source code for this site on GitHub"))
+     "View the "
+     (a ((href ,SITE-SOURCE-URL))
+        "source code")
+     " for the site on GitHub.")
     (p "© " ,(~a SITE-YEAR) " Christopher Vote · " ,SITE-LICENSE)
     (p "Last updated: " ,LAST-UPDATED)))
 
