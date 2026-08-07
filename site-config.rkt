@@ -1,55 +1,31 @@
 #lang racket
 
-(require racket/system
-         racket/string
-         racket/port
-         racket/match)
-
-(define (git-last-updated)
-  (match-define (list stdout stdin pid stderr control)
-    (process* (find-executable-path "git")
-              "log"
-              "-1"
-              "--format=%ad"
-              "--date=format:%B %-d, %Y"))
-  (close-output-port stdin)
-  (define date (string-trim (port->string stdout)))
-  (define err (port->string stderr))
-  (close-input-port stdout)
-  (close-input-port stderr)
-  (control 'wait)
-  (unless (string=? err "")
-    (eprintf "git-last-updated error: ~a\n" err))
-  (if (string=? date "")
-      "Unknown"
-      date))
+(require racket/string
+         racket/port)
 
 
-#|
-(define (git-last-updated)
-  (match-define (list stdout stdin pid stderr control)
-    (process* (find-executable-path "git")
-              "log"
-              "-1"
-              "--format=%ad"
-              "--date=format:%B %-d, %Y"))
-  (close-output-port stdin)
+;; last-updated : -> string?
+;; Reads the build date baked into the image at /app/last-updated.txt
+;; (written by the Dockerfile at build time). Falls back to "Unknown"
+;; if the file is missing, e.g. when running outside the container.
+(define (last-updated)
+  (define path "/app/last-updated.txt")
+  (with-handlers ([exn:fail? (lambda (e) "Unknown")])
+    (define contents
+      (string-trim (call-with-input-file path port->string)))
+    (if (string=? contents "")
+        "Unknown"
+        contents)))
 
-  (define date
-    (string-trim (port->string stdout)))
-  (close-input-port stdout)
-  (close-input-port stderr)
-  (control 'wait)
-  (if (string=? date "")
-      "Unknown"
-      date))
-|#
 
 ;; Site metadata
-(define LAST-UPDATED (git-last-updated))
+(define LAST-UPDATED
+  (last-updated))
+
 (define SITE-AUTHOR "Christopher Vote")
 (define SITE-DESCRIPTION
   "Computer Science portfolio and projects by Christopher Vote.")
+
 (define SITE-YEAR 2026)
 (define SITE-LICENSE "MIT License")
 (define SITE-SOURCE-URL
