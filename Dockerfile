@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY . .
 
-RUN raco pkg install --auto web-server mime-type-lib 
+RUN raco pkg install --auto --no-docs web-server mime-type-lib 
 
 EXPOSE 8000
 
