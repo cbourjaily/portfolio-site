@@ -1,10 +1,8 @@
-FROM racket/racket:8.18
+FROM racket/racket:8.18-full
 
 WORKDIR /app
 
 COPY . .
-
-RUN raco pkg install --auto --no-docs web-server mime-type-lib 
 
 EXPOSE 8000
 
