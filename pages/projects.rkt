@@ -89,7 +89,6 @@
 
       (p
        (a ((href "https://github.com/cbourjaily/small-shell"))
-          "Source Code"))))
+          "Source Code"))))))
 
-
-   (provide render-projects-page)
+(provide render-projects-page)
