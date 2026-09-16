@@ -31,11 +31,6 @@
        ", a live storefront.")
 
       (p
-       (a ((href "https://thuida.com/"))
-          "Live Example")
-
-       " | "
-
        (a ((href "https://github.com/cbourjaily/thuida"))
           "Source Code")))
 
