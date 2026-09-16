@@ -22,12 +22,13 @@
        (strong "Language: ") "Common Lisp")
 
       (p
-       "A reusable commerce engine for rapidly deploying niche "
-       "e-commerce sites from structured product and affiliate data. "
-       "The engine handles product ingestion, catalog generation, "
-       "search, filtering, affiliate links, and storefront rendering, "
-       "allowing a new niche storefront to be deployed with minimal "
-       "site-specific code.")
+       "A backend pipeline that pulls affiliate product feeds into "
+       "a searchable SQLite catalog. Built around Impact.com's feed "
+       "format, with the vendor-specific parsing isolated to a "
+       "single file so the rest of the pipeline -- schema, storage, "
+       "retailer onboarding -- doesn't depend on it. Powers "
+       (a ((href "https://thuida.com/")) "Thuida")
+       ", a live storefront.")
 
       (p
        (a ((href "https://thuida.com/"))
