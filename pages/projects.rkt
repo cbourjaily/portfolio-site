@@ -7,49 +7,89 @@
    `(div
      (h1 "Projects")
 
+     ;; impact-commerce-engine
+     (article
+      (h2 "impact-commerce-engine")
+
+      (figure
+       (img ((class "project-image")
+             (src "/images/thuida.png")
+             (alt "Thuida — example storefront powered by impact-commerce-engine")))
+       (figcaption
+        "Example deployment: Thuida"))
+
+      (p
+       (strong "Language: ") "Common Lisp")
+
+      (p
+       "A reusable commerce engine for rapidly deploying niche "
+       "e-commerce sites from structured product and affiliate data. "
+       "The engine handles product ingestion, catalog generation, "
+       "search, filtering, affiliate links, and storefront rendering, "
+       "allowing a new niche storefront to be deployed with minimal "
+       "site-specific code.")
+
+      (p
+       (a ((href "https://thuida.com/"))
+          "Live Example")
+
+       " | "
+
+       (a ((href "https://github.com/cbourjaily/thuida"))
+          "Source Code")))
+
      ;; icmp-ping-gui
      (article
       (h2 "icmp-ping-gui")
 
-      (img ((class "project-image")
-            (src "/images/icmp-ping-gui.png")
-            (alt "ICMP Ping GUI")))
+      (figure
+       (img ((class "project-image")
+             (src "/images/icmp-ping-gui.png")
+             (alt "ICMP Ping GUI")))
+       (figcaption
+        "icmp-ping-gui sending live requests"))
 
       (p
        (strong "Language: ") "Python")
 
       (p
-       "A desktop GUI for sending ICMP echo requests without relying on the operating system's "
+       "A desktop GUI built to send ICMP echo requests without depending "
+       "on the operating system's "
        (code "ping")
-       " utility. The application constructs, sends, and validates ICMP packets directly "
-       "in Python, streaming results live through a responsive interface.")
+       " utility — the application constructs, sends, and validates ICMP "
+       "packets directly in Python, streaming results live through a "
+       "responsive interface.")
 
       (p
        (a ((href "https://github.com/cbourjaily/icmp-ping-gui/releases/tag/v1.0.0"))
           "Linux Download")
-       
        " | "
-       
        (a ((href "https://github.com/cbourjaily/icmp-ping-gui"))
           "Source Code")))
-     
+
      ;; small-shell
      (article
       (h2 "small-shell")
-      
-      (img ((class "project-image")
-            (src "/images/small-shell.png")
-            (alt "small-shell demonstration")))
+
+      (figure
+       (img ((class "project-image")
+             (src "/images/small-shell.png")
+             (alt "small-shell demonstration")))
+       (figcaption
+        "small-shell running interactively"))
 
       (p
        (strong "Language: ") "C")
 
       (p
-       "A Unix-like shell implementing process creation, job control, "
-       "signal handling, built-in commands, and I/O redirection.")
+       "A Unix-like shell built from scratch to understand how process "
+       "management actually works under the hood. Implements process "
+       "creation, job control, signal handling, built-in commands, and "
+       "I/O redirection.")
 
       (p
-       (a ((href "https://github.com/cbourjaily/small-shell")) "Source Code"))))))
+       (a ((href "https://github.com/cbourjaily/small-shell"))
+          "Source Code"))))
 
 
-(provide render-projects-page)
+   (provide render-projects-page)
