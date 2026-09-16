@@ -85,6 +85,32 @@
 
       (p
        (a ((href "https://github.com/cbourjaily/small-shell"))
+          "Source Code")))
+
+     ;; table-tennis-simulation
+     (article
+      (h2 "table-tennis-simulation")
+
+      (figure
+       (img ((class "project-image")
+             (src "/images/table_tennis.png")
+             (alt "table-tennis-simulation running")))
+       (figcaption
+        "Doubles match simulated with POSIX semaphores"))
+
+      (p
+       (strong "Language: ") "C")
+
+      (p
+       "A doubles table-tennis match simulated two ways: once "
+       "sequentially, once with four real threads coordinated "
+       "through POSIX semaphores. The concurrent version enforces "
+       "turn order within and across both teams, and shuts down "
+       "cleanly by waking every thread once the winning score is "
+       "reached.")
+
+      (p
+       (a ((href "https://github.com/cbourjaily/table-tennis-simulation"))
           "Source Code"))))))
 
 (provide render-projects-page)
