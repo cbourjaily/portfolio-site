@@ -31,7 +31,7 @@
        ", a live storefront.")
 
       (p
-       (a ((href "https://github.com/cbourjaily/thuida"))
+       (a ((href "https://github.com/cbourjaily/impact-commerce-engine"))
           "Source Code")))
 
      ;; icmp-ping-gui
